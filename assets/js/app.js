@@ -13,9 +13,9 @@ const randomMissionBtn = document.getElementById('randomMissionBtn');
 const joinForm = document.getElementById('joinForm');
 const playerPanel = document.getElementById('playerPanel');
 const playerNameInput = document.getElementById('playerNameInput');
-const groupNameInput = document.getElementById('groupNameInput');
+const studentIdInput = document.getElementById('studentIdInput');
 const currentPlayerName = document.getElementById('currentPlayerName');
-const currentGroupName = document.getElementById('currentGroupName');
+const currentStudentId = document.getElementById('currentStudentId');
 const backendStatus = document.getElementById('backendStatus');
 const leaderboardBody = document.getElementById('leaderboardBody');
 
@@ -226,9 +226,10 @@ function renderPlayer() {
   joinForm.classList.add('hidden');
   playerPanel.classList.remove('hidden');
   currentPlayerName.textContent = `Player: ${state.player.player_name}`;
-  currentGroupName.textContent = state.player.group_name
-    ? `Group: ${state.player.group_name}`
-    : 'Group: Solo';
+  const studentId = state.player.student_id || state.player.group_name || '';
+  currentStudentId.textContent = studentId
+    ? `Student ID: ${studentId}`
+    : 'Student ID: Not provided';
 }
 
 function renderStats() {
@@ -767,12 +768,12 @@ async function saveProgressToBackend(tutorialId, progress) {
   }
 }
 
-async function createPlayer(name, group) {
+async function createPlayer(name, studentId) {
   if (!supabaseClient) {
     const player = {
       id: crypto.randomUUID(),
       player_name: name,
-      group_name: group || '',
+      student_id: studentId || '',
     };
 
     localStorage.setItem('flutterQuestCurrentPlayer', JSON.stringify(player));
@@ -785,7 +786,7 @@ async function createPlayer(name, group) {
 
   const { data, error } = await supabaseClient
     .from('players')
-    .insert({ player_name: name, group_name: group || '' })
+    .insert({ player_name: name, student_id: studentId || '' })
     .select()
     .single();
 
@@ -908,7 +909,7 @@ async function loadLeaderboard() {
             <tr>
               <td>${index + 1}</td>
               <td>${escapeHtml(row.player.player_name)}</td>
-              <td>${escapeHtml(row.player.group_name || 'Solo')}</td>
+              <td>${escapeHtml(row.player.student_id || row.player.group_name || 'Not provided')}</td>
               <td>${row.activities}</td>
               <td>${row.quests}</td>
               <td>${row.score}</td>
@@ -953,10 +954,10 @@ joinForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   const name = playerNameInput.value.trim();
-  const group = groupNameInput.value.trim();
-  if (!name) return;
+  const studentId = studentIdInput.value.trim();
+  if (!name || !studentId) return;
 
-  await createPlayer(name, group);
+  await createPlayer(name, studentId);
   renderGrid();
   loadLeaderboard();
   showToast('Welcome to Flutter Quest Academy!');

@@ -1,6 +1,6 @@
 # Flutter Quest: Activity Path + Quest Upload Edition
 
-This version follows the handbook activity flow.
+This version follows the handbook activity flow and records each player using their Student ID.
 
 ## Main design
 

@@ -22,8 +22,8 @@
       </div>
       <aside class="status-card">
         <div class="orb">📘</div><h2>Player Status</h2>
-        <form id="joinForm" class="join-form"><label>Your name</label><input id="playerNameInput" required placeholder="e.g., Aisyah" /><label>Group / Team</label><input id="groupNameInput" placeholder="e.g., Team Hot Reload" /><button class="primary-btn form-btn" type="submit">Join Game</button></form>
-        <div id="playerPanel" class="player-panel hidden"><p class="player-name" id="currentPlayerName"></p><p class="player-group" id="currentGroupName"></p><div class="meter"><div id="progressBar"></div></div><div class="stats"><div><strong id="activityCount">0</strong><span>Activity Uploads</span></div><div><strong id="questCount">0</strong><span>Quest Uploads</span></div></div><p id="rankText">Rank: Tutorial Rookie</p></div>
+        <form id="joinForm" class="join-form"><label>Your name</label><input id="playerNameInput" required placeholder="e.g., Aisyah" /><label>Student ID</label><input id="studentIdInput" required placeholder="e.g., 22022651" /><button class="primary-btn form-btn" type="submit">Join Game</button></form>
+        <div id="playerPanel" class="player-panel hidden"><p class="player-name" id="currentPlayerName"></p><p class="player-student-id" id="currentStudentId"></p><div class="meter"><div id="progressBar"></div></div><div class="stats"><div><strong id="activityCount">0</strong><span>Activity Uploads</span></div><div><strong id="questCount">0</strong><span>Quest Uploads</span></div></div><p id="rankText">Rank: Tutorial Rookie</p></div>
         <p id="backendStatus" class="backend-status">Checking backend...</p>
       </aside>
     </section>
@@ -31,7 +31,7 @@
   <main>
     <section class="section intro"><div><p class="eyebrow">Game Rules</p><h2>How to Clear a Level</h2></div><div class="flow"><article><span>1</span><h3>Activity Path</h3><p>Work through Activity 1, Activity 2, Activity 3, and the remaining checkpoints in order.</p></article><article><span>2</span><h3>Activity Proof</h3><p>Upload one screenshot or image after completing the full activity path.</p></article><article><span>3</span><h3>Boss Quest</h3><p>The tutorial’s extra activities become one final challenge for the level.</p></article><article><span>4</span><h3>Quest Proof</h3><p>Upload one screenshot or image after completing the Boss Quest.</p></article></div></section>
     <section id="map" class="section"><div class="section-head"><p class="eyebrow">Quest Map</p><h2>Choose Your Tutorial Level</h2></div><div id="tutorialGrid" class="tutorial-grid"></div></section>
-    <section class="section leaderboard-section"><div class="section-head"><p class="eyebrow">Class Board</p><h2>Live Progress</h2><p class="muted">Score: Activity Upload = 60 points, Quest Upload = 40 points.</p></div><div class="leaderboard-card"><table><thead><tr><th>#</th><th>Player</th><th>Group</th><th>Activities</th><th>Quests</th><th>Score</th></tr></thead><tbody id="leaderboardBody"><tr><td colspan="6">No data yet.</td></tr></tbody></table></div></section>
+    <section class="section leaderboard-section"><div class="section-head"><p class="eyebrow">Class Board</p><h2>Live Progress</h2><p class="muted">Score: Activity Upload = 60 points, Quest Upload = 40 points.</p></div><div class="leaderboard-card"><table><thead><tr><th>#</th><th>Player</th><th>Student ID</th><th>Activities</th><th>Quests</th><th>Score</th></tr></thead><tbody id="leaderboardBody"><tr><td colspan="6">No data yet.</td></tr></tbody></table></div></section>
   </main>
   <dialog id="tutorialDialog"><div id="dialogContent"></div></dialog>
   <div id="toast" class="toast">Progress updated!</div>

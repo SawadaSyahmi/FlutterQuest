@@ -50,6 +50,8 @@ After the project is ready:
 5. Paste it into Supabase SQL Editor.
 6. Click **Run**.
 
+The SQL file also supports migration from the older version with **Group / Team**. If you already ran the previous schema, run `supabase/schema.sql` again to add the new `student_id` column.
+
 The SQL setup creates:
 
 - `players` table
@@ -148,7 +150,7 @@ If it shows offline mode, check these items:
 
 1. Open the game page.
 2. Enter a player name.
-3. Enter a group name if needed.
+3. Enter the student ID.
 4. Click **Start Adventure**.
 5. Open Level 1.
 6. Follow the activities.

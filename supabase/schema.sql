@@ -6,10 +6,32 @@ create extension if not exists pgcrypto;
 create table if not exists public.players (
   id uuid primary key default gen_random_uuid(),
   player_name text not null check (char_length(player_name) between 1 and 80),
-  group_name text,
+  student_id text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+-- Migration support: older versions used group_name.
+-- Re-running this schema on an existing project adds student_id without deleting old data.
+alter table public.players add column if not exists student_id text;
+
+do $$
+begin
+  if exists (
+    select 1
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'players'
+      and column_name = 'group_name'
+  ) then
+    execute $q$
+      update public.players
+      set student_id = group_name
+      where (student_id is null or student_id = '')
+        and group_name is not null
+    $q$;
+  end if;
+end $$;
 
 create table if not exists public.tutorial_progress (
   id uuid primary key default gen_random_uuid(),
@@ -129,10 +151,10 @@ drop policy if exists "tutorial_proofs_update_public" on storage.objects;
 create policy "tutorial_proofs_update_public" on storage.objects for update to anon using (bucket_id = 'tutorial-proofs') with check (bucket_id = 'tutorial-proofs');
 
 create or replace view public.flutter_quest_leaderboard as
-select p.id, p.player_name, coalesce(p.group_name,'Solo') as group_name,
+select p.id, p.player_name, coalesce(p.student_id,'Not provided') as student_id,
 count(tp.*) filter (where tp.activity_completed = true) as activity_uploads,
 count(tp.*) filter (where tp.quest_completed = true) as quest_uploads,
 count(tp.*) filter (where tp.activity_completed = true) * 60 + count(tp.*) filter (where tp.quest_completed = true) * 40 as score
 from public.players p left join public.tutorial_progress tp on tp.player_id = p.id
-group by p.id, p.player_name, p.group_name
+group by p.id, p.player_name, p.student_id
 order by score desc, quest_uploads desc, activity_uploads desc;
