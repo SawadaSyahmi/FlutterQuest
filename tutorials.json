@@ -1,0 +1,346 @@
+[
+  {
+    "id": 1,
+    "emoji": "🧙‍♂️",
+    "world": "Dart Dungeon",
+    "title": "Dart Language Walkthrough: Basics, Collections, Functions, and OOP",
+    "theme": "Complete 11 activities in order, then finish 5 extra quest tasks.",
+    "activities": [
+      {
+        "title": "Activity 1: Your first Dart program",
+        "code": "void main() {\n  print('Hello, Dart!');\n  print('Welcome to Tutorial 1.');\n}"
+      },
+      {
+        "title": "Activity 2: Declaring variables",
+        "code": "void main() {\n  int day = 1;\n  double score = 85.5;\n  String name = 'Ali';\n  bool isPassed = true;\n  print(day);\n  print(score);\n  print(name);\n  print(isPassed);\n}"
+      },
+      {
+        "title": "Activity 3: var and dynamic",
+        "code": "void main() {\n  var age = 21;\n  dynamic anything = 100;\n  print(age);\n  print(anything);\n  anything = 'Now I am a string';\n  print(anything);\n}"
+      },
+      {
+        "title": "Activity 4: final and const",
+        "code": "void main() {\n  final studentId = 'SCSJ001';\n  const piValue = 3.14159;\n  print(studentId);\n  print(piValue);\n}"
+      },
+      {
+        "title": "Activity 5: String interpolation",
+        "code": "void main() {\n  String studentName = 'Aisyah';\n  int age = 20;\n  double testScore = 88.5;\n  print(\"Student's name: $studentName\");\n  print(\"Age: $age\");\n  print(\"Test score: $testScore\");\n  print(\"Result: ${testScore >= 50 ? 'Pass' : 'Fail'}\");\n}"
+      },
+      {
+        "title": "Activity 6: Enumeration",
+        "code": "enum Days {\n  monday, tuesday, wednesday, thursday, friday, saturday, sunday\n}\nvoid main() {\n  Days today = Days.thursday;\n  print(Days.values);\n  print(today);\n  print(today.index);\n}"
+      },
+      {
+        "title": "Activity 7: Control flow",
+        "code": "void main() {\n  int mark = 72;\n  if (mark >= 80) {\n    print('Grade A');\n  } else if (mark >= 65) {\n    print('Grade B');\n  } else {\n    print('Grade C or below');\n  }\n  for (int i = 1; i <= 3; i++) {\n    print(i);\n  }\n}"
+      },
+      {
+        "title": "Activity 8: Collections",
+        "code": "void main() {\n  List<int> numbers = [10, 20, 30];\n  Set<String> fruits = {'apple', 'banana', 'apple'};\n  Map<String, int> marks = {'Ali': 80, 'Siti': 92};\n  print(numbers);\n  print(fruits);\n  print(marks);\n}"
+      },
+      {
+        "title": "Activity 9: Functions",
+        "code": "double rectangleArea(double width, double height) {\n  return width * height;\n}\nint square(int x) => x * x;\nvoid main() {\n  print(rectangleArea(10, 20));\n  print(square(5));\n}"
+      },
+      {
+        "title": "Activity 10: Classes and objects",
+        "code": "class Student {\n  String name;\n  int age;\n  Student(this.name, this.age);\n  void introduce() {\n    print('My name is $name and I am $age years old.');\n  }\n}\nvoid main() {\n  Student s1 = Student('Ali', 21);\n  s1.introduce();\n}"
+      },
+      {
+        "title": "Activity 11: Async and null safety",
+        "code": "Future<String> fetchMessage() async {\n  await Future.delayed(const Duration(seconds: 2));\n  return 'Data received';\n}\nvoid main() async {\n  print('Loading...');\n  String result = await fetchMessage();\n  print(result);\n  String? nickname;\n  print(nickname);\n}"
+      }
+    ],
+    "quests": [
+      "What is the difference between var and dynamic?",
+      "When should you use final and when should you use const?",
+      "Write a function called isEven() that returns true if a number is even.",
+      "Create a Book class with title, author, and price, then create two objects.",
+      "Write a program using Future.delayed() that prints a message after 3 seconds."
+    ],
+    "questTitle": "Extra Quest: Dart Mastery Challenge"
+  },
+  {
+    "id": 2,
+    "emoji": "🛠️",
+    "world": "Widget Forge",
+    "title": "Flutter Project Setup and Basic Widgets",
+    "theme": "Complete 7 activities in order, then finish 5 extra quest tasks.",
+    "activities": [
+      {
+        "title": "Activity 1: Create a project",
+        "code": "flutter create tutorial2_basic_widgets\ncd tutorial2_basic_widgets\ncode .\nflutter run"
+      },
+      {
+        "title": "Activity 2: Replace the default app",
+        "code": "import 'package:flutter/material.dart';\nvoid main() {\n  runApp(const StudentDirectoryApp());\n}\nclass StudentDirectoryApp extends StatelessWidget {\n  const StudentDirectoryApp({super.key});\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: 'Sunway Student Directory',\n      home: Scaffold(\n        appBar: AppBar(\n          title: const Text('Sunway Student Directory'),\n        ),\n        body: const Center(\n          child: Text('Welcome to Flutter!'),\n        ),\n      ),\n    );\n  }\n}"
+      },
+      {
+        "title": "Activity 3: Add a student list",
+        "code": "body: ListView(\n  children: const [\n    ListTile(\n      leading: CircleAvatar(child: Text('A')),\n      title: Text('Ali Hakim'),\n      subtitle: Text('22110001'),\n      trailing: Icon(Icons.arrow_forward_ios),\n    ),\n    ListTile(\n      leading: CircleAvatar(child: Text('S')),\n      title: Text('Siti Nur'),\n      subtitle: Text('22110002'),\n      trailing: Icon(Icons.arrow_forward_ios),\n    ),\n  ],\n),"
+      },
+      {
+        "title": "Activity 4: Use ListView.separated",
+        "code": "final students = [\n  {'name': 'Ali Hakim', 'id': '22110001'},\n  {'name': 'Siti Nur', 'id': '22110002'},\n  {'name': 'John Lee', 'id': '22110003'},\n];\nbody: ListView.separated(\n  itemCount: students.length,\n  separatorBuilder: (context, index) => const Divider(height: 1),\n  itemBuilder: (context, index) {\n    final student = students[index];\n    return ListTile(\n      leading: CircleAvatar(child: Text(student['name']![0])),\n      title: Text(student['name']!),\n      subtitle: Text(student['id']!),\n    );\n  },\n),"
+      },
+      {
+        "title": "Activity 5: Show a SnackBar",
+        "code": "onTap: () {\n  ScaffoldMessenger.of(context).showSnackBar(\n    SnackBar(\n      content: Text('${student['name']} selected'),\n    ),\n  );\n},"
+      },
+      {
+        "title": "Activity 6: Add a FloatingActionButton",
+        "code": "floatingActionButton: FloatingActionButton(\n  onPressed: () {\n    ScaffoldMessenger.of(context).showSnackBar(\n      const SnackBar(content: Text('Add new student button pressed')),\n    );\n  },\n  child: const Icon(Icons.add),\n),"
+      },
+      {
+        "title": "Activity 7: Add a Drawer",
+        "code": "drawer: Drawer(\n  child: ListView(\n    padding: EdgeInsets.zero,\n    children: const [\n      DrawerHeader(\n        decoration: BoxDecoration(color: Colors.blue),\n        child: Text(\n          'Student Directory Menu',\n          style: TextStyle(color: Colors.white, fontSize: 20),\n        ),\n      ),\n      ListTile(leading: Icon(Icons.home), title: Text('Home')),\n      ListTile(leading: Icon(Icons.person), title: Text('Profile')),\n      ListTile(leading: Icon(Icons.settings), title: Text('Settings')),\n    ],\n  ),\n),"
+      }
+    ],
+    "quests": [
+      "Change the app title to My Class Directory.",
+      "Add two more students to the list.",
+      "Modify the SnackBar so it shows both the student name and ID.",
+      "Add one more drawer item called About.",
+      "Change the app theme color."
+    ],
+    "questTitle": "Extra Quest: Upgrade Challenge"
+  },
+  {
+    "id": 3,
+    "emoji": "⚡",
+    "world": "State Reactor Lab",
+    "title": "Stateful Widgets and setState()",
+    "theme": "Complete 5 activities in order, then finish 5 extra quest tasks.",
+    "activities": [
+      {
+        "title": "Activity 1: Start from a static screen",
+        "code": "class ProfileStyleApp extends StatelessWidget {\n  const ProfileStyleApp({super.key});\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      home: Scaffold(\n        appBar: AppBar(title: const Text('Profile Style Controller')),\n        body: const Center(\n          child: Text(\n            'Hello, Sunway Student!',\n            style: TextStyle(fontSize: 24, color: Colors.blue),\n          ),\n        ),\n      ),\n    );\n  }\n}"
+      },
+      {
+        "title": "Activity 2: Convert to StatefulWidget",
+        "code": "class ProfileHomePage extends StatefulWidget {\n  const ProfileHomePage({super.key});\n  @override\n  State<ProfileHomePage> createState() => _ProfileHomePageState();\n}\nclass _ProfileHomePageState extends State<ProfileHomePage> {\n  Color textColor = Colors.blue;\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      appBar: AppBar(title: const Text('Profile Style Controller')),\n      body: Center(\n        child: Column(\n          mainAxisAlignment: MainAxisAlignment.center,\n          children: [\n            Text(\n              'Hello, Sunway Student!',\n              style: TextStyle(fontSize: 24, color: textColor),\n            ),\n            ElevatedButton(\n              onPressed: () {\n                setState(() {\n                    textColor = Colors.red;\n                });\n              },\n              child: const Text('Change Color'),\n            ),\n          ],\n        ),\n      ),\n    );\n  }\n}"
+      },
+      {
+        "title": "Activity 3: Add font size and a slider",
+        "code": "double fontSize = 24;\nSlider(\n  min: 16,\n  max: 48,\n  value: fontSize,\n  onChanged: (value) {\n    setState(() {\n        fontSize = value;\n    });\n  },\n),"
+      },
+      {
+        "title": "Activity 4: Add a toggle state",
+        "code": "bool isBold = false;\nSwitchListTile(\n  title: const Text('Bold Text'),\n  value: isBold,\n  onChanged: (value) {\n    setState(() {\n        isBold = value;\n    });\n  },\n),"
+      },
+      {
+        "title": "Activity 5: Add custom message and reset",
+        "code": "String displayText = 'Hello, Sunway Student!';\nElevatedButton(\n  onPressed: () {\n    setState(() {\n        displayText = 'Welcome to Mobile App Development';\n        textColor = Colors.blue;\n        fontSize = 24;\n        isBold = false;\n    });\n  },\n  child: const Text('Reset'),\n),"
+      }
+    ],
+    "quests": [
+      "Add one more switch to toggle italic text.",
+      "Add a button to set the text color back to black.",
+      "Add a text field so the user can type a custom message.",
+      "Show the current style settings inside a Card.",
+      "Explain why the page is a better place for state than only the Text widget."
+    ],
+    "questTitle": "Extra Quest: Upgrade Challenge"
+  },
+  {
+    "id": 4,
+    "emoji": "🚪",
+    "world": "Route Portal Tower",
+    "title": "Navigation and Routing in Flutter",
+    "theme": "Complete 7 activities in order, then finish 5 extra quest tasks.",
+    "activities": [
+      {
+        "title": "Activity 1: Build the list screen",
+        "code": "class StudentListScreen extends StatelessWidget {\n  const StudentListScreen({super.key});\n  @override\n  Widget build(BuildContext context) {\n    final students = ['Ali', 'Siti', 'John', 'Mei Lin'];\n    return Scaffold(\n      appBar: AppBar(title: const Text('Student List')),\n      body: ListView.builder(\n        itemCount: students.length,\n        itemBuilder: (context, index) {\n          return ListTile(\n            leading: CircleAvatar(child: Text(students[index][0])),\n            title: Text(students[index]),\n            trailing: const Icon(Icons.arrow_forward_ios),\n          );\n        },\n      ),\n    );\n  }\n}"
+      },
+      {
+        "title": "Activity 2: Add a detail screen",
+        "code": "class StudentDetailScreen extends StatelessWidget {\n  final String studentName;\n  const StudentDetailScreen({super.key, required this.studentName});\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      appBar: AppBar(title: const Text('Student Detail')),\n      body: Center(\n        child: Text('Details for $studentName'),\n      ),\n    );\n  }\n}"
+      },
+      {
+        "title": "Activity 3: Push to another screen",
+        "code": "onTap: () {\n  Navigator.push(\n    context,\n    MaterialPageRoute(\n      builder: (context) => StudentDetailScreen(\n        studentName: students[index],\n      ),\n    ),\n  );\n},"
+      },
+      {
+        "title": "Activity 4: Pop back",
+        "code": "ElevatedButton(\n  onPressed: () {\n    Navigator.pop(context);\n  },\n  child: const Text('Back'),\n),"
+      },
+      {
+        "title": "Activity 5: Return a result",
+        "code": "Navigator.pop(context, '$studentName: Excellent');"
+      },
+      {
+        "title": "Activity 6: Receive the result",
+        "code": "final result = await Navigator.push(\n  context,\n  MaterialPageRoute(\n    builder: (context) => StudentDetailScreen(studentName: students[index]),\n  ),\n);\nif (result != null) {\n  setState(() {\n      latestFeedback = result;\n  });\n}"
+      },
+      {
+        "title": "Activity 7: Use named routes",
+        "code": "return MaterialApp(\n  initialRoute: '/',\n  onGenerateRoute: (settings) {\n    if (settings.name == '/') {\n      return MaterialPageRoute(builder: (_) => const StudentListScreen());\n    }\n    if (settings.name == '/detail') {\n      final studentName = settings.arguments as String;\n      return MaterialPageRoute(\n        builder: (_) => StudentDetailScreen(studentName: studentName),\n      );\n    }\n    return null;\n  },\n);"
+      }
+    ],
+    "quests": [
+      "Add one more student to the list.",
+      "Pass both student name and ID to the detail screen.",
+      "Add a third screen called SummaryScreen.",
+      "Add a confirmation dialog before logging out.",
+      "Refactor route names into constants."
+    ],
+    "questTitle": "Extra Quest: Upgrade Challenge"
+  },
+  {
+    "id": 5,
+    "emoji": "📦",
+    "world": "Dependency Supply Base",
+    "title": "Dependency Injection in Flutter",
+    "theme": "Complete 5 activities in order, then finish 5 extra quest tasks.",
+    "activities": [
+      {
+        "title": "Activity 1: Define the dependency",
+        "code": "class Student {\n  final String name;\n  final String course;\n  const Student({required this.name, required this.course});\n}\nabstract class StudentDataService {\n  List<Student> getStudents();\n}\nclass MockStudentDataService implements StudentDataService {\n  @override\n  List<Student> getStudents() {\n    return const [\n      Student(name: 'Ali', course: 'Mobile App Development'),\n      Student(name: 'Siti', course: 'Data Structures'),\n      Student(name: 'John', course: 'Computer Networks'),\n    ];\n  }\n}"
+      },
+      {
+        "title": "Activity 2: Global DI",
+        "code": "StudentDataService studentDataService = MockStudentDataService();\nfinal students = studentDataService.getStudents();"
+      },
+      {
+        "title": "Activity 3: Constructor DI",
+        "code": "class StudentListScreen extends StatelessWidget {\n  final StudentDataService service;\n  const StudentListScreen({super.key, required this.service});\n  @override\n  Widget build(BuildContext context) {\n    final students = service.getStudents();\n    return ListView.builder(\n      itemCount: students.length,\n      itemBuilder: (context, index) => ListTile(\n        title: Text(students[index].name),\n      ),\n    );\n  }\n}"
+      },
+      {
+        "title": "Activity 4: InheritedWidget DI",
+        "code": "class StudentServiceProvider extends InheritedWidget {\n  final StudentDataService service;\n  const StudentServiceProvider({\n      super.key,\n      required this.service,\n      required super.child,\n  });\n  static StudentDataService of(BuildContext context) {\n    final provider =\n    context.dependOnInheritedWidgetOfExactType<StudentServiceProvider>();\n    return provider!.service;\n  }\n  @override\n  bool updateShouldNotify(StudentServiceProvider oldWidget) {\n    return service != oldWidget.service;\n  }\n}"
+      },
+      {
+        "title": "Activity 5: Service locator DI with get_it",
+        "code": "final getIt = GetIt.instance;\nvoid setupDependencies() {\n  getIt.registerSingleton<StudentDataService>(\n    MockStudentDataService(),\n  );\n}\nfinal service = getIt<StudentDataService>();"
+      }
+    ],
+    "quests": [
+      "Add a second dependency called AuthService.",
+      "Create a TeacherDataService in addition to StudentDataService.",
+      "Switch between two implementations of the same service.",
+      "Rewrite the service locator version using constructor DI and compare the code length.",
+      "Discuss which approach is easiest for small apps and which is better for larger apps."
+    ],
+    "questTitle": "Extra Quest: Upgrade Challenge"
+  },
+  {
+    "id": 6,
+    "emoji": "🔋",
+    "world": "Provider Power Grid",
+    "title": "Provider for Dependency Injection and State Management",
+    "theme": "Complete 6 activities in order, then finish 5 extra quest tasks.",
+    "activities": [
+      {
+        "title": "Activity 1: Create the service and app state",
+        "code": "class AppState extends ChangeNotifier {\n  bool isDarkMode = false;\n  String appTitle = 'Student Preference App';\n  void toggleDarkMode() {\n    isDarkMode = !isDarkMode;\n    notifyListeners();\n  }\n  void changeTitle(String newTitle) {\n    appTitle = newTitle;\n    notifyListeners();\n  }\n}"
+      },
+      {
+        "title": "Activity 2: Set up providers",
+        "code": "return MultiProvider(\n  providers: [\n    Provider<StudentDataService>(\n      create: (_) => MockStudentDataService(),\n    ),\n    ChangeNotifierProvider<AppState>(\n      create: (_) => AppState(),\n    ),\n  ],\n  child: Consumer<AppState>(\n    builder: (context, appState, child) {\n      return MaterialApp(\n        theme: ThemeData(\n          brightness:\n          appState.isDarkMode ? Brightness.dark : Brightness.light,\n        ),\n        home: const StudentHomeScreen(),\n      );\n    },\n  ),\n);"
+      },
+      {
+        "title": "Activity 3: Read a dependency with Provider.of",
+        "code": "final studentService =\nProvider.of<StudentDataService>(context, listen: false);\nfinal students = studentService.getStudents();"
+      },
+      {
+        "title": "Activity 4: Use Consumer",
+        "code": "Consumer<AppState>(\n  builder: (context, appState, child) {\n    return Text(appState.appTitle);\n  },\n),"
+      },
+      {
+        "title": "Activity 5: Update shared state",
+        "code": "ElevatedButton(\n  onPressed: () {\n    Provider.of<AppState>(context, listen: false).toggleDarkMode();\n  },\n  child: const Text('Toggle Dark Mode'),\n),"
+      },
+      {
+        "title": "Activity 6: Use Selector",
+        "code": "Selector<AppState, bool>(\n  selector: (_, appState) => appState.isDarkMode,\n  builder: (context, isDarkMode, child) {\n    return Text('Dark mode is ${isDarkMode ? \"ON\" : \"OFF\"}');\n  },\n),"
+      }
+    ],
+    "quests": [
+      "Add another button to change the title back to the original title.",
+      "Add a second provider for a UserProfile object.",
+      "Use Selector to rebuild only the title widget.",
+      "Add a ThemeColorState provider that stores a selected primary color.",
+      "Compare using setState() and ChangeNotifierProvider."
+    ],
+    "questTitle": "Extra Quest: Upgrade Challenge"
+  },
+  {
+    "id": 7,
+    "emoji": "🏰",
+    "world": "MVVM Guild Hall",
+    "title": "MVVM Architecture with Provider and Service Locator",
+    "theme": "Complete 5 activities in order, then finish 5 extra quest tasks.",
+    "activities": [
+      {
+        "title": "Activity 1: Create the model and service",
+        "code": "class Course {\n  final String code;\n  final String title;\n  bool isFavorite;\n  Course({\n      required this.code,\n      required this.title,\n      this.isFavorite = false,\n  });\n}\nabstract class CourseService {\n  Future<List<Course>> getCourses();\n}\nclass MockCourseService implements CourseService {\n  @override\n  Future<List<Course>> getCourses() async {\n    await Future.delayed(const Duration(seconds: 1));\n    return [\n      Course(code: 'CSC2074', title: 'Mobile Application Development'),\n      Course(code: 'CSC1024', title: 'Programming Principles'),\n    ];\n  }\n}"
+      },
+      {
+        "title": "Activity 2: Create the ViewModel",
+        "code": "class CourseViewModel extends ChangeNotifier {\n  final CourseService courseService;\n  CourseViewModel(this.courseService);\n  List<Course> courses = [];\n  bool isLoading = false;\n  String screenTitle = 'Course Catalog App';\n  Future<void> loadCourses() async {\n    isLoading = true;\n    notifyListeners();\n    courses = await courseService.getCourses();\n    isLoading = false;\n    notifyListeners();\n  }\n  void toggleFavorite(Course course) {\n    course.isFavorite = !course.isFavorite;\n    notifyListeners();\n  }\n}"
+      },
+      {
+        "title": "Activity 3: Register dependencies in get_it",
+        "code": "void setupDependencies() {\n  getIt.registerLazySingleton<CourseService>(() => MockCourseService());\n  getIt.registerFactory<CourseViewModel>(\n    () => CourseViewModel(getIt<CourseService>()),\n  );\n}"
+      },
+      {
+        "title": "Activity 4: Provide the ViewModel",
+        "code": "return ChangeNotifierProvider<CourseViewModel>(\n  create: (_) => getIt<CourseViewModel>()..loadCourses(),\n  child: const MaterialApp(\n    home: CourseListScreen(),\n  ),\n);"
+      },
+      {
+        "title": "Activity 5: Build the View",
+        "code": "return Consumer<CourseViewModel>(\n  builder: (context, viewModel, child) {\n    return Scaffold(\n      appBar: AppBar(title: Text(viewModel.screenTitle)),\n      body: viewModel.isLoading\n      ? const Center(child: CircularProgressIndicator())\n      : ListView.builder(\n        itemCount: viewModel.courses.length,\n        itemBuilder: (context, index) {\n          final course = viewModel.courses[index];\n          return ListTile(\n            title: Text(course.title),\n            subtitle: Text(course.code),\n            trailing: IconButton(\n              icon: Icon(\n                course.isFavorite\n                ? Icons.favorite\n                : Icons.favorite_border,\n              ),\n              onPressed: () {\n                viewModel.toggleFavorite(course);\n              },\n            ),\n          );\n        },\n      ),\n    );\n  },\n);"
+      }
+    ],
+    "quests": [
+      "Add one more field to Course such as lecturer name.",
+      "Add a button to clear all favorites.",
+      "Create an alternative service implementation and switch it in setupDependencies().",
+      "Add a loading error message if the service fails.",
+      "Refactor the project into multiple files following MVVM structure."
+    ],
+    "questTitle": "Extra Quest: Upgrade Challenge"
+  },
+  {
+    "id": 8,
+    "emoji": "🛰️",
+    "world": "Backend Space Station",
+    "title": "HTTP, JSON, and Backend Integration in Flutter",
+    "theme": "Complete 6 activities in order, then finish 5 extra quest tasks.",
+    "activities": [
+      {
+        "title": "Activity 1: Create the model",
+        "code": "class StudentUser {\n  final int id;\n  final String name;\n  final String email;\n  StudentUser({\n      required this.id,\n      required this.name,\n      required this.email,\n  });\n  factory StudentUser.fromJson(Map<String, dynamic> json) {\n    return StudentUser(\n      id: json['id'],\n      name: json['name'],\n      email: json['email'],\n    );\n  }\n  Map<String, dynamic> toJson() {\n    return {\n      'id': id,\n      'name': name,\n      'email': email,\n    };\n  }\n}"
+      },
+      {
+        "title": "Activity 2: Decode local JSON first",
+        "code": "const jsonString = '''\n[\n  {\"id\": 1, \"name\": \"Ali\", \"email\": \"ali@email.com\"},\n  {\"id\": 2, \"name\": \"Siti\", \"email\": \"siti@email.com\"}\n]\n''';\nfinal List<dynamic> parsed = jsonDecode(jsonString);\nfinal students = parsed.map((e) => StudentUser.fromJson(e)).toList();"
+      },
+      {
+        "title": "Activity 3: Encode objects back into JSON",
+        "code": "final encoded = jsonEncode(students.first.toJson());\ndebugPrint('Encoded JSON: $encoded');"
+      },
+      {
+        "title": "Activity 4: Create a service class",
+        "code": "class StudentApiService {\n  Future<List<StudentUser>> fetchStudents() async {\n    final url = Uri.parse('https://jsonplaceholder.typicode.com/users');\n    final response = await http.get(url);\n    if (response.statusCode == 200) {\n      final List<dynamic> parsed = jsonDecode(response.body);\n      return parsed.map((e) => StudentUser.fromJson(e)).toList();\n    } else {\n      throw Exception('Failed to load students');\n    }\n  }\n}"
+      },
+      {
+        "title": "Activity 5: Use FutureBuilder",
+        "code": "body: FutureBuilder<List<StudentUser>>(\n  future: futureStudents,\n  builder: (context, snapshot) {\n    if (snapshot.connectionState == ConnectionState.waiting) {\n      return const Center(child: CircularProgressIndicator());\n    }\n    if (snapshot.hasError) {\n      return Center(child: Text('Error: ${snapshot.error}'));\n    }\n    final students = snapshot.data ?? [];\n    return ListView.builder(\n      itemCount: students.length,\n      itemBuilder: (context, index) {\n        final student = students[index];\n        return ListTile(\n          title: Text(student.name),\n          subtitle: Text(student.email),\n        );\n      },\n    );\n  },\n),"
+      },
+      {
+        "title": "Activity 6: Refresh data",
+        "code": "void refreshData() {\n  setState(() {\n      futureStudents = service.fetchStudents();\n  });\n}"
+      }
+    ],
+    "quests": [
+      "Add another field from the API, such as username or phone number.",
+      "Create a details screen and pass the selected StudentUser to it.",
+      "Add a retry button when an error occurs.",
+      "Replace the API endpoint with another JSON endpoint and adjust the model.",
+      "Refactor StudentApiService into the Service layer from your MVVM project."
+    ],
+    "questTitle": "Extra Quest: Upgrade Challenge"
+  }
+]
